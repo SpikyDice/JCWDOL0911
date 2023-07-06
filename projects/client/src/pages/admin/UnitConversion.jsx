@@ -32,6 +32,7 @@ function UnitConversion() {
   const dispatch = useDispatch();
   countData = parseInt(countData);
   const pages = Math.floor(countData / 5);
+  const limit = 5;
 
   const searchHandler = (e) => {
     setOffset(0);
@@ -54,7 +55,7 @@ function UnitConversion() {
     setOffset(prevOffset);
   };
   useEffect(() => {
-    dispatch(fetchProducts(order, filter, search, offset));
+    dispatch(fetchProducts(order, filter, search, offset, limit));
   }, [order, filter, search, offset]);
 
   return (
@@ -145,7 +146,7 @@ function UnitConversion() {
                   </div>
                 </button>
               )}
-              {offset / 6 == pages ? (
+              {offset / 5 == pages ? (
                 <></>
               ) : (
                 <button
